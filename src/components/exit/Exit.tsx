@@ -1,13 +1,11 @@
 import React from 'react';
-import { Layout, Input, Divider, Typography } from 'antd';
-
-const { Search } = Input;
-const { Title } = Typography;
+import { Layout } from 'antd';
 
 const Exit: React.FC = () => {
 
     return (
         <Layout>
+            EXIT
         </Layout>
     )
 }
