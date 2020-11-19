@@ -6,7 +6,7 @@ import { setBackground } from './background';
 import { addXWing, handleShooting } from './x-wing';
 
 const app = new PIXI.Application({
-    width: 800, height: 600, backgroundColor: 0x082B32, resolution: window.devicePixelRatio || 1,
+    width: 800, height: 600, backgroundColor: 0x030F12, resolution: window.devicePixelRatio || 1,
 });
 
 document.body.appendChild(app.view);
