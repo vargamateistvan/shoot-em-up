@@ -55,7 +55,6 @@ export const handleShooting = (app: PIXI.Application) => {
     app.ticker.add((delta) => {
         bullets.forEach((bullet, index, object) => {
             if (bullet.x > app.screen.width) {
-                console.log('Bullet removed', bullet);
                 object.splice(index, 1);
                 app.stage.removeChild(bullet);
             }
