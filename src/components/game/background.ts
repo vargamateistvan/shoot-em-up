@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import star from '../../assets/images/star.png'
 
-export const setBackground = (app) => {
+export const setBackground = (app: PIXI.Application) => {
     // Get the texture for rope.
     const starTexture = PIXI.Texture.from(star);
 
@@ -24,7 +24,7 @@ export const setBackground = (app) => {
     // Create the stars
     const stars: Star[] = [];
     for (let i = 0; i < starAmount; i++) {
-        const star = {
+        const star: Star = {
             sprite: new PIXI.Sprite(starTexture),
             z: 0,
             x: 0,
@@ -52,8 +52,7 @@ export const setBackground = (app) => {
         // Simple easing. This should be changed to proper easing function when used for real.
         speed += (warpSpeed - speed) / 20;
         cameraZ += delta * 10 * (speed + baseSpeed);
-        for (let i = 0; i < starAmount; i++) {
-            const star = stars[i];
+        stars.forEach(star => {
             if (star.z < cameraZ) randomizeStar(star);
 
             // Map star 3d position to 2d with really simple projection
@@ -71,6 +70,6 @@ export const setBackground = (app) => {
             // Scale the star depending on how fast we are moving, what the stretchfactor is and depending on how far away it is from the center.
             star.sprite.scale.y = distanceScale * starBaseSize + distanceScale * speed * starStretch * distanceCenter / app.renderer.screen.width;
             star.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2;
-        }
+        });
     });
 }

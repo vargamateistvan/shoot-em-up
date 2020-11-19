@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js'
 import { Layout } from 'antd';
 
 import { setBackground } from './background';
-import { addXWing } from './x-wing';
+import { addXWing, handleShooting } from './x-wing';
 
 const app = new PIXI.Application({
     width: 800, height: 600, backgroundColor: 0x082B32, resolution: window.devicePixelRatio || 1,
@@ -11,12 +11,9 @@ const app = new PIXI.Application({
 
 document.body.appendChild(app.view);
 
-const container = new PIXI.Container();
-
-app.stage.addChild(container);
-
 setBackground(app);
-addXWing(app, container);
+addXWing(app);
+handleShooting(app);
 
 const playground = document.getElementById('pxrender');
 if (playground) {
