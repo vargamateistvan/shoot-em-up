@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import explosionImage from '../../assets/images/explosion.png'
+import gameOverImage from '../../assets/images/game-over.png'
 
 export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: PIXI.Sprite[], tieFighters: PIXI.Sprite[]) => {
     const explosionTexture = PIXI.Texture.from(explosionImage);
@@ -21,6 +22,34 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
         }
     }
 
+    function endGame() {
+        // Add game over image
+        const gameOverTexture = PIXI.Texture.from(gameOverImage);
+        const gameOver = new PIXI.Sprite(gameOverTexture);
+        gameOver.x = app.screen.width / 2 - 150;
+        gameOver.y = app.screen.height / 2 - 77.5;
+        app.stage.addChild(gameOver);
+
+        // Remove sprites
+        app.stage.removeChild(xWing);
+
+        bullets.forEach((bullet, index, object) => {
+            object.splice(index, 1);
+            app.stage.removeChild(bullet);
+        });
+
+        tieFighters.forEach((tieFighter, index, object) => {
+            object.splice(index, 1);
+            app.stage.removeChild(tieFighter);
+        });
+
+        app.stop();
+
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 5000)
+    }
+
     app.ticker.add((delta) => {
         // If bullet hits Tie Fighter
         bullets.forEach((bullet, bulletIndex, bulletObject) => {
@@ -35,6 +64,14 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
                     addExplosion(tieFighter.x, tieFighter.y);
                 }
             })
+        })
+
+        // If Tie fighter hits X-Wing
+        tieFighters.forEach((tieFighter) => {
+            if (xWing.x >= tieFighter.x - 25 && xWing.x <= tieFighter.x + 25 && xWing.y >= tieFighter.y - 25 && xWing.y <= tieFighter.y + 25) {
+                addExplosion(xWing.x, xWing.y)
+                endGame();
+            }
         })
     })
 }
