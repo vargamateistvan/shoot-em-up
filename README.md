@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Shoot'em up game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How it works
 
-## Available Scripts
+### Install dependencies
 
-In the project directory, you can run:
+```
+npm install
+```
 
-### `yarn start`
+### Run game
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm run start-dev
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Task
 
-### `yarn test`
+Client Developer Test Task – Shoot&#39;em up game
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Description
 
-### `yarn build`
+Create a browser game with JavaScript or TypeScript, without using any third-party game frameworks (i.e. Unity, Phaser, Construct, RPG Maker, etc.). The only exception is PixiJS which is recommended, but not mandatory.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Specification
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* the game should work on most modern browsers on desktop
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* the game should be 800x600 px in size, it is not necessary to handle resizing • at the start, a _Splash screen_ is shown for 2 seconds, then fades out and the game continues to the main screen
 
-### `yarn eject`
+* the _Main screen_ contains the following elements:
+    * background with some animation to make the view more interesting
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    * 4 buttons placed in the middle, from top to bottom: GAME1, GAME2, GAME3 and EXIT
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    * clicking the EXIT button navigates somewhere
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    * clicking any of the GAME buttons takes the user to the game
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    * a logo above the buttons
 
-## Learn More
+* the _Game screen_ is a simple side scroller Shoot&#39;em up with spaceships
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    * the player&#39;s spaceship can move around the game area
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    * it can shoot rockets
+
+    * the background moves from right to left, with a parallax scrolling effect o every 2 seconds, an enemy spaceship arrives
+
+    * the enemy spaceships move in some randomized way
+
+    * if the projectile of the player&#39;s spaceship hits an enemy, its spaceship blows up and disappears, emitting particles
+
+    * if the player&#39;s spaceship collides with an enemy object, it blows up, and the game ends, going back to the main menu
+
+### Scoring
+
+The quality of the graphics is not counted towards the score. An additional score is awarded for using ES6+, TypeScript, PixiJS, and/or any source and resource optimization. You can submit the task by uploading it to GitHub or by simply sending us the source by e-mail.
