@@ -1,5 +1,7 @@
 # Shoot'em up game
 
+## Live preview
+https://space-shoot-em-up.herokuapp.com/
 ## How it works
 
 ### Install dependencies
