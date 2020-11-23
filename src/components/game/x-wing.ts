@@ -60,9 +60,15 @@ export const handleShooting = (app: PIXI.Application): PIXI.Sprite[] => {
     // Listen for shooting
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
-            const bullet = new PIXI.Sprite(bulletTexture);
+            let bullet = new PIXI.Sprite(bulletTexture);
             bullet.x = xWing.x + 20;
-            bullet.y = xWing.y;
+            bullet.y = xWing.y - 20;
+            app.stage.addChild(bullet);
+            bullets.push(bullet);
+
+            bullet = new PIXI.Sprite(bulletTexture);
+            bullet.x = xWing.x + 20;
+            bullet.y = xWing.y + 10;
             app.stage.addChild(bullet);
             bullets.push(bullet);
         }
