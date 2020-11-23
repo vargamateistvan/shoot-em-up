@@ -43,9 +43,13 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
             app.stage.removeChild(tieFighter);
         });
 
-
+        // Stop application
         setTimeout(() => {
             app.stop();
+        }, 1000)
+
+        // Redirect to menu
+        setTimeout(() => {
             window.location.href = '/';
         }, 5000)
     }
