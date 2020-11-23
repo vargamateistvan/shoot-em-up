@@ -2,52 +2,47 @@ import * as PIXI from 'pixi.js'
 import xWingImage from '../../assets/images/x-wing.png'
 import bulletImage from '../../assets/images/bullet.png'
 
-let xWingContainer;
+let xWing;
 
-export const addXWing = (app: PIXI.Application) => {
-    xWingContainer = new PIXI.Container();
-    app.stage.addChild(xWingContainer);
-
+export const addXWing = (app: PIXI.Application): PIXI.Sprite => {
     // Create a new texture
     const xWingTexture = PIXI.Texture.from(xWingImage);
 
-    const xWing = new PIXI.Sprite(xWingTexture);
+    xWing = new PIXI.Sprite(xWingTexture);
     xWing.anchor.set(0.5);
-    xWingContainer.addChild(xWing);
+    app.stage.addChild(xWing);
 
     // Move xWingContainer to the center
-    xWingContainer.x = app.screen.width - (app.screen.width - 50);
-    xWingContainer.y = app.screen.height / 2;
-
-    // Center X-wing sprite in local xWingContainer coordinates
-    xWingContainer.pivot.x = xWingContainer.width / 2;
-    xWingContainer.pivot.y = xWingContainer.height / 2;
+    xWing.x = app.screen.width - (app.screen.width - 50);
+    xWing.y = app.screen.height / 2;
 
     // Listen for X-wing movement
     document.addEventListener('keydown', (e) => {
         if (e.code === 'ArrowRight') {
-            if (xWingContainer.x >= app.screen.width - 50) return;
-            xWingContainer.x += 5
+            if (xWing.x >= app.screen.width - 50) return;
+            xWing.x += 10
         }
 
         if (e.code === 'ArrowLeft') {
-            if (xWingContainer.x <= 50) return;
-            xWingContainer.x -= 5
+            if (xWing.x <= 50) return;
+            xWing.x -= 10
         }
 
         if (e.code === 'ArrowDown') {
-            if (xWingContainer.y >= app.screen.height - 50) return;
-            xWingContainer.y += 5
+            if (xWing.y >= app.screen.height - 50) return;
+            xWing.y += 10
         }
 
         if (e.code === 'ArrowUp') {
-            if (xWingContainer.y <= 50) return;
-            xWingContainer.y -= 5
+            if (xWing.y <= 50) return;
+            xWing.y -= 10
         }
     })
+
+    return xWing;
 }
 
-export const handleShooting = (app: PIXI.Application) => {
+export const handleShooting = (app: PIXI.Application): PIXI.Sprite[] => {
     const bulletSpeed = 2.5;
     const bulletTexture = PIXI.Texture.from(bulletImage);
     const bullets: PIXI.Sprite[] = [];
@@ -66,10 +61,12 @@ export const handleShooting = (app: PIXI.Application) => {
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
             const bullet = new PIXI.Sprite(bulletTexture);
-            bullet.x = xWingContainer.x + 20;
-            bullet.y = xWingContainer.y;
+            bullet.x = xWing.x + 20;
+            bullet.y = xWing.y;
             app.stage.addChild(bullet);
             bullets.push(bullet);
         }
     })
+
+    return bullets;
 }
