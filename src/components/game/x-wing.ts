@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import xWingImage from '../../assets/images/x-wing.png'
-import bulletImage from '../../assets/images/bullet.png'
+import { space, arrowUp, arrowDown, arrowLeft, arrowRight } from './keyEvents';
 
 let xWing;
 
@@ -19,23 +19,19 @@ export const addXWing = (app: PIXI.Application): PIXI.Sprite => {
     // Listen for X-wing movement
     document.addEventListener('keydown', (e) => {
         if (e.code === 'ArrowRight') {
-            if (xWing.x >= app.screen.width - 50) return;
-            xWing.x += 10
+            arrowRight(xWing, app);
         }
 
         if (e.code === 'ArrowLeft') {
-            if (xWing.x <= 50) return;
-            xWing.x -= 10
+            arrowLeft(xWing);
         }
 
         if (e.code === 'ArrowDown') {
-            if (xWing.y >= app.screen.height - 50) return;
-            xWing.y += 10
+            arrowDown(xWing, app);
         }
 
         if (e.code === 'ArrowUp') {
-            if (xWing.y <= 50) return;
-            xWing.y -= 10
+            arrowUp(xWing);
         }
     })
 
@@ -44,7 +40,6 @@ export const addXWing = (app: PIXI.Application): PIXI.Sprite => {
 
 export const handleShooting = (app: PIXI.Application): PIXI.Sprite[] => {
     const bulletSpeed = 2.5;
-    const bulletTexture = PIXI.Texture.from(bulletImage);
     const bullets: PIXI.Sprite[] = [];
 
     app.ticker.add((delta) => {
@@ -60,17 +55,7 @@ export const handleShooting = (app: PIXI.Application): PIXI.Sprite[] => {
     // Listen for shooting
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
-            let bullet = new PIXI.Sprite(bulletTexture);
-            bullet.x = xWing.x + 20;
-            bullet.y = xWing.y - 20;
-            app.stage.addChild(bullet);
-            bullets.push(bullet);
-
-            bullet = new PIXI.Sprite(bulletTexture);
-            bullet.x = xWing.x + 20;
-            bullet.y = xWing.y + 10;
-            app.stage.addChild(bullet);
-            bullets.push(bullet);
+            space(bullets, xWing, app);
         }
     })
 
