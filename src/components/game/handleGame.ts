@@ -43,10 +43,10 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
             app.stage.removeChild(tieFighter);
         });
 
-        app.stop();
 
         setTimeout(() => {
-            // window.location.href = '/';
+            app.stop();
+            window.location.href = '/';
         }, 5000)
     }
 
@@ -68,8 +68,8 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
 
         // If Tie fighter hits X-Wing
         tieFighters.forEach((tieFighter) => {
-            if (xWing.x >= tieFighter.x - 25 && xWing.x <= tieFighter.x + 25 && xWing.y >= tieFighter.y - 25 && xWing.y <= tieFighter.y + 25) {
-                addExplosion(xWing.x, xWing.y)
+            if (tieFighter.x >= xWing.x - 25 && tieFighter.x <= xWing.x + 25 && tieFighter.y >= xWing.y - 50 && tieFighter.y <= xWing.y) {
+                addExplosion(xWing.x - 50, xWing.y - 50)
                 endGame();
             }
         })
