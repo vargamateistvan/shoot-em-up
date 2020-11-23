@@ -1,7 +1,7 @@
 import * as PIXI from 'pixi.js'
 import tieFighterImage from '../../assets/images/tie-fighter.png'
 
-export const addTieFighters = (app: PIXI.Application) => {
+export const addTieFighters = (app: PIXI.Application): PIXI.Sprite[] => {
     const tieFighterSpeed = 2.5;
     const tieFighterTexture = PIXI.Texture.from(tieFighterImage);
     const tieFighters: PIXI.Sprite[] = [];
@@ -24,4 +24,6 @@ export const addTieFighters = (app: PIXI.Application) => {
             tieFighter.y = tieFighter.y + (Math.floor(Math.random() * 10) % 2 === 0 ? -1 : 1 * delta * tieFighterSpeed / 10);
         })
     })
+
+    return tieFighters;
 }
