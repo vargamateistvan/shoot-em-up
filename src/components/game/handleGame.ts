@@ -46,7 +46,7 @@ export const handleGame = (app: PIXI.Application, xWing: PIXI.Sprite, bullets: P
         app.stop();
 
         setTimeout(() => {
-            window.location.href = '/';
+            // window.location.href = '/';
         }, 5000)
     }
 

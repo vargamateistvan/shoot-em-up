@@ -13,22 +13,23 @@ function App() {
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <Button type="primary" shape="round" size="large" href="/game">
               GAME1
-                </Button>
+            </Button>
             <Button type="primary" shape="round" size="large" href="/game">
               GAME2
-                </Button>
+            </Button>
             <Button type="primary" shape="round" size="large" href="/game">
               GAME3
-                </Button>
+            </Button>
             <Button type="primary" shape="round" size="large" href="/exit">
               Exit
-                </Button>
+            </Button>
           </div>
         </Route>
         <Route exact path='/game' component={Game} />
         <Route exact path='/exit' component={Exit} />
       </Layout>
-    </Router>);
+    </Router>
+  );
 }
 
 export default App;
