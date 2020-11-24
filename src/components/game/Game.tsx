@@ -6,7 +6,7 @@ import { setBackground } from './background';
 import { addXWing, handleShooting } from './x-wing';
 import { addTieFighters } from './tie-figter';
 import { handleGame } from './handleGame';
-import { arrowDown, arrowLeft, arrowRight, arrowUp, space } from './keyEvents';
+import { arrowDown, arrowLeft, arrowRight, arrowUp, space } from '../utils/keyEvents';
 
 const { Title, Text } = Typography;
 
@@ -18,9 +18,6 @@ const Game: React.FC = () => {
         resolution: window.devicePixelRatio || 1,
         forceCanvas: false
     });
-
-    // const renderer = PIXI.autoDetectRenderer({ width: 800, height: 600 });
-    // document.body.appendChild(renderer.view);
 
     useEffect(() => {
         const playground = document.getElementById('playground');

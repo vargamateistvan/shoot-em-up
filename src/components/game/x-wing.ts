@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import xWingImage from '../../assets/images/x-wing.png'
-import { space, arrowUp, arrowDown, arrowLeft, arrowRight } from './keyEvents';
+import { xWingMovement, xWingShooting } from '../utils/eventListeners';
 
 let xWing;
 
@@ -16,24 +16,7 @@ export const addXWing = (app: PIXI.Application): PIXI.Sprite => {
     xWing.x = app.screen.width - (app.screen.width - 50);
     xWing.y = app.screen.height / 2;
 
-    // Listen for X-wing movement
-    document.addEventListener('keydown', (e) => {
-        if (e.code === 'ArrowRight') {
-            arrowRight(xWing, app);
-        }
-
-        if (e.code === 'ArrowLeft') {
-            arrowLeft(xWing);
-        }
-
-        if (e.code === 'ArrowDown') {
-            arrowDown(xWing, app);
-        }
-
-        if (e.code === 'ArrowUp') {
-            arrowUp(xWing);
-        }
-    })
+    xWingMovement(xWing, app);
 
     return xWing;
 }
@@ -52,12 +35,7 @@ export const handleShooting = (app: PIXI.Application): PIXI.Sprite[] => {
         })
     })
 
-    // Listen for shooting
-    document.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') {
-            space(bullets, xWing, app);
-        }
-    })
+    xWingShooting(bullets, xWing, app);
 
     return bullets;
 }
