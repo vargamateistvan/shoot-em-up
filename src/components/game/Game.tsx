@@ -63,7 +63,7 @@ const Game: React.FC = () => {
     window.onresize = resize;
 
     return (
-        <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', bottom: 0 }}>
+        <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', bottom: 0, backgroundColor: 'black' }}>
             <div id="playground"></div>
 
             <Title>Controls</Title>

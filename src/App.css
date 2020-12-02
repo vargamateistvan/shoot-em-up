@@ -9,8 +9,16 @@ canvas {
     width: 800px;
 }
 
+.container {
+	display: 'flex';
+	justify-content: 'center';
+	align-items: center;
+	height: '100vh';
+}
+
 .App {
 	text-align: center;
+	background-color: rgb(29, 27, 27);
 }
 
 .App-logo {
