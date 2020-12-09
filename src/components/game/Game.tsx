@@ -66,10 +66,10 @@ const Game: React.FC = () => {
         <Layout style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', bottom: 0, backgroundColor: 'black' }}>
             <div id="playground"></div>
 
-            <Title>Controls</Title>
+            <Title style={{ color: 'white' }}>Controls</Title>
             <Space size={200}>
-                <Text>Shoot</Text>
-                <Text>Movement</Text>
+                <Text style={{ color: 'white' }}>Shoot</Text>
+                <Text style={{ color: 'white' }}>Movement</Text>
             </Space>
             <Row align="bottom" justify="space-around">
                 <Col>
